@@ -1,1 +1,74 @@
-
+Coding Challenge – Day 1
+Assume you are working as a Data Analyst for an online food delivery platform.
+Your task is to write SQL queries based on the given database structure.
+The database contains two tables:
+• Customers – stores customer details
+• Orders – stores food order information
+Your goal is to analyze the data and answer the questions using SQL queries only.
+Database Schema
+Table: Customers
+Column Type
+customer_id INT (PK)
+name VARCHAR(50)
+city VARCHAR(50)
+Table: Orders
+Column Type
+order_id INT (PK)
+customer_id INT (FK)
+restaurant VARCHAR(50)
+amount DECIMAL(10,2)
+order_date DATE
+SQL Setup (Run Before Attempting)
+Create Customers table
+CREATE TABLE Customers (
+ customer_id INT PRIMARY KEY,
+ name VARCHAR(50),
+ city VARCHAR(50)
+);
+Insert data into Customers
+INSERT INTO Customers (customer_id, name, city) VALUES
+(1, 'Arjun', 'Bengaluru'),
+(2, 'Sneha', 'Hyderabad'),
+(3, 'Rahul', 'Chennai'),
+(4, 'Priya', 'Bengaluru'),
+(5, 'Kiran', 'Mumbai'),
+(6, 'Divya', 'Bengaluru'),
+(7, 'Vikram', 'Hyderabad'),
+(8, 'Asha', 'Chennai'),
+(9, 'Manoj', 'Pune'),
+(10, 'Swathi', 'Bengaluru');
+Create Orders table
+CREATE TABLE Orders (
+ order_id INT PRIMARY KEY,
+ customer_id INT,
+ restaurant VARCHAR(50),
+ amount DECIMAL(10,2),
+ order_date DATE,
+ FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+Insert data into Orders
+INSERT INTO Orders (order_id, customer_id, restaurant, amount, order_date) VALUES
+(101, 1, 'Meghana Foods', 550.00, '2025-01-01'),
+(102, 2, 'Paradise Biryani', 780.00, '2025-01-03'),
+(103, 3, 'KFC', 420.00, '2025-01-05'),
+(104, 1, 'Empire Restaurant', 300.00, '2025-01-08'),
+(105, 4, 'Meghana Foods', 950.00, '2025-01-10'),
+(106, 6, 'Truffles', 1100.00, '2025-01-11'),
+(107, 7, 'Kritunga', 650.00, '2025-01-12'),
+(108, 4, 'KFC', 350.00, '2025-01-14'),
+(109, 9, 'Burger King', 270.00, '2025-01-15'),
+(110, 10, 'Meghana Foods', 1250.00, '2025-01-16');
+SQL Tasks
+1. List all customers who have placed at least one order.
+2. Find the total amount spent by each customer.
+3. Display the top 3 customers based on total spending.
+4. Retrieve all orders placed in the last 7 days (from latest order date).
+5. Show customers who have never placed an order.
+6. Find the restaurant that received the highest number of orders.
+7. List customers from “Bengaluru” who spent more than ₹1000.
+8. Show the total number of orders placed per city.
+9. Find the average order amount for each restaurant.
+10. Identify customers who placed more than 5 orders.
+Submission
+Upload the SQL File with queries and word document with question,sql statement and
+respective output into your Git repository.
